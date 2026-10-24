@@ -1,5 +1,13 @@
 # Cloud Computing · USIL
 
+**Web pública:** https://usil-arq-emp-web.jeferson5456.blitz.cloud/
+
+**Código:** https://github.com/jeferson1802a/usil-arq-emp-lab
+
+**Imagen:** https://hub.docker.com/r/jefersonmp45/usil-arq-emp-lab · etiqueta `1.0.0` · `linux/amd64`.
+
+Entrega publicada y validada el 24 de octubre de 2026. La construcción y publicación reales se ejecutaron en GitHub Actions porque este equipo no tiene Docker. Ver `ESTADO.md` para resultados y diferencias respecto al procedimiento con Codespaces.
+
 Laboratorio individual de Arquitectura Empresarial, 2026-2. Página educativa estática en español con diseño adaptable, diagrama del flujo del proyecto y respuestas a las cinco preguntas de reflexión. Se creó de nuevo a partir del enunciado: el ZIP y la carpeta de `/mnt/data` de la conversación anterior no estaban disponibles en este equipo.
 
 ## Vista local sin Docker
@@ -41,6 +49,8 @@ Abrir el puerto 8080 en la pestaña Ports. Comprobar ordenador y móvil, navegac
 
 ## Docker Hub
 
+Se incluye una alternativa a Codespaces: GitHub Actions ejecuta las mismas pruebas de Docker en `.github/workflows/validate.yml`. El flujo manual `Publicar imagen en Docker Hub` construye, prueba y sube la imagen usando el secreto cifrado `DOCKERHUB_TOKEN`; se ejecuta desde Actions → Publicar imagen en Docker Hub → Run workflow. El token se configura por la persona titular o con su autorización explícita. Para este flujo basta lectura/escritura y no hace falta acceso a Cloud Sandboxes ni permisos de borrado.
+
 Crear el repositorio público `jefersonmp45/usil-arq-emp-lab`. Iniciar sesión desde el entorno donde se construyó la imagen:
 
 ```bash
@@ -49,7 +59,7 @@ docker push jefersonmp45/usil-arq-emp-lab:1.0.0
 docker buildx imagetools inspect jefersonmp45/usil-arq-emp-lab:1.0.0
 ```
 
-Introducir el token únicamente en el indicador privado de contraseña. No ponerlo en comandos, archivos, capturas ni el chat. El enunciado describe la creación de un token temporal de 30 días y los permisos que indica el docente. La persona titular debe autorizar y completar la creación del token. Guardar el digest de la imagen y confirmar que la etiqueta 1.0.0 está visible públicamente.
+Introducir el token únicamente en el indicador privado de contraseña. No ponerlo en comandos, archivos, capturas ni el chat. El enunciado describe la creación de un token temporal de 30 días y los permisos que indica el docente. Su creación y almacenamiento requieren autorización de la persona titular. Guardar el digest de la imagen y confirmar que la etiqueta 1.0.0 está visible públicamente.
 
 ## Blitz Cloud
 
