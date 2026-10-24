@@ -1,5 +1,7 @@
 # Estado verificable del laboratorio
 
+Este registro conserva la entrega inicial 1.0.0. La versión pública actual con el logo USIL es 1.0.2; sus resultados se documentan en `ACTUALIZACION-LOGO.md`.
+
 Fecha: 24 de octubre de 2026 (America/Lima).
 
 La web se reconstruyó a partir del PDF; no se recuperaron los archivos anteriores de `/mnt/data`.

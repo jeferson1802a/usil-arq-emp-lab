@@ -1,5 +1,7 @@
 # Laboratorio de Contenedores: Docker y nube
 
+Actualización posterior: el logo USIL del usuario se incorporó a la versión pública 1.0.2. Este informe conserva el desarrollo de la entrega inicial 1.0.0; ver `ACTUALIZACION-LOGO.md` para el cambio posterior.
+
 **Universidad:** Universidad San Ignacio de Loyola (USIL).  
 **Curso:** Desarrollo de Sistemas Empresariales / Arquitectura Empresarial.  
 **Periodo:** 2026-2, Semana 10.  

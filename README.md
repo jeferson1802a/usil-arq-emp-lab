@@ -1,10 +1,12 @@
 # Cloud Computing · USIL
 
+La versión actual 1.0.2 incorpora el logo USIL facilitado por el usuario. Ver `ACTUALIZACION-LOGO.md` para la publicación y validación de este cambio.
+
 **Web pública:** https://usil-arq-emp-web.jeferson5456.blitz.cloud/
 
 **Código:** https://github.com/jeferson1802a/usil-arq-emp-lab
 
-**Imagen:** https://hub.docker.com/r/jefersonmp45/usil-arq-emp-lab · etiqueta `1.0.0` · `linux/amd64`.
+**Imagen:** https://hub.docker.com/r/jefersonmp45/usil-arq-emp-lab · etiqueta `1.0.2` · `linux/amd64`.
 
 Entrega publicada y validada el 24 de octubre de 2026. La construcción y publicación reales se ejecutaron en GitHub Actions porque este equipo no tiene Docker. Ver `ESTADO.md` para resultados y diferencias respecto al procedimiento con Codespaces.
 
@@ -32,7 +34,7 @@ docker --version
 docker buildx version
 docker info
 node --check app.js
-bash scripts/test-container.sh jefersonmp45/usil-arq-emp-lab:1.0.0
+bash scripts/test-container.sh jefersonmp45/usil-arq-emp-lab:1.0.2
 ```
 
 La prueba construye para linux/amd64, ejecuta `nginx -t`, comprueba título, recursos, healthcheck, cabecera nosniff, rutas 404 y plataforma. Elimina solamente su contenedor temporal al finalizar. No afirma éxito si un paso falla.
@@ -40,7 +42,7 @@ La prueba construye para linux/amd64, ejecuta `nginx -t`, comprueba título, rec
 Para la comprobación visual del contenedor:
 
 ```bash
-docker run -d --name usil-web -p 8080:80 jefersonmp45/usil-arq-emp-lab:1.0.0
+docker run -d --name usil-web -p 8080:80 jefersonmp45/usil-arq-emp-lab:1.0.2
 curl -I http://localhost:8080
 docker inspect --format '{{.State.Health.Status}}' usil-web
 ```
@@ -55,17 +57,17 @@ Crear el repositorio público `jefersonmp45/usil-arq-emp-lab`. Iniciar sesión d
 
 ```bash
 docker login -u jefersonmp45
-docker push jefersonmp45/usil-arq-emp-lab:1.0.0
-docker buildx imagetools inspect jefersonmp45/usil-arq-emp-lab:1.0.0
+docker push jefersonmp45/usil-arq-emp-lab:1.0.2
+docker buildx imagetools inspect jefersonmp45/usil-arq-emp-lab:1.0.2
 ```
 
-Introducir el token únicamente en el indicador privado de contraseña. No ponerlo en comandos, archivos, capturas ni el chat. El enunciado describe la creación de un token temporal de 30 días y los permisos que indica el docente. Su creación y almacenamiento requieren autorización de la persona titular. Guardar el digest de la imagen y confirmar que la etiqueta 1.0.0 está visible públicamente.
+Introducir el token únicamente en el indicador privado de contraseña. No ponerlo en comandos, archivos, capturas ni el chat. El enunciado describe la creación de un token temporal de 30 días y los permisos que indica el docente. Su creación y almacenamiento requieren autorización de la persona titular. Guardar el digest de la imagen y confirmar que la etiqueta 1.0.2 está visible públicamente.
 
 ## Blitz Cloud
 
 1. Iniciar sesión en https://dashboard.blitz.cloud/ y completar la configuración inicial.
 2. Elegir Host something new y la opción para una imagen pública de Docker Hub.
-3. Imagen: `jefersonmp45/usil-arq-emp-lab`, etiqueta: `1.0.0`, puerto: **80**.
+3. Imagen: `jefersonmp45/usil-arq-emp-lab`, etiqueta: `1.0.2`, puerto: **80**.
 4. Nombre de aplicación sugerido: `usil-arq-emp-web`. No necesita base de datos, variables secretas ni volúmenes.
 5. Revisar que el plan elegido sea gratuito antes de confirmar. No activar un plan de pago sin autorización.
 6. Publicar y esperar un estado correcto. Copiar únicamente la URL real asignada por la plataforma.
@@ -74,7 +76,7 @@ Introducir el token únicamente en el indicador privado de contraseña. No poner
 
 - Abrir la URL HTTPS sin sesión e inspeccionar el título Cloud Computing, el diagrama y los estilos.
 - Confirmar HTTP 200 con `curl -I` y un certificado válido.
-- Confirmar la etiqueta 1.0.0 en Docker Hub y registrar su digest.
+- Confirmar la etiqueta 1.0.2 en Docker Hub y registrar su digest.
 - Cerrar o detener Codespaces y repetir la visita a la URL pública.
 - Capturar el repositorio, la prueba del contenedor, la etiqueta de Docker Hub, el estado de Blitz y la web final. No incluir credenciales.
 - Registrar resultados reales en `ESTADO.md`. Un comando preparado o una captura de ejemplo no demuestra un despliegue.
