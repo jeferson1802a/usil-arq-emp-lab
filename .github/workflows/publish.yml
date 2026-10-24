@@ -1,0 +1,29 @@
+name: Publicar imagen en Docker Hub
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Comprobar acceso configurado
+        env:
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: test -n "$DOCKERHUB_TOKEN" || { echo 'Falta el secreto DOCKERHUB_TOKEN'; exit 1; }
+      - name: Validar JavaScript
+        run: node --check app.js
+      - name: Construir y probar la entrega
+        run: bash scripts/test-container.sh jefersonmp45/usil-arq-emp-lab:1.0.0
+      - name: Autenticar Docker Hub
+        env:
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: printf '%s' "$DOCKERHUB_TOKEN" | docker login --username jefersonmp45 --password-stdin
+      - name: Publicar la imagen probada
+        run: |
+          docker push jefersonmp45/usil-arq-emp-lab:1.0.0
+          docker buildx imagetools inspect jefersonmp45/usil-arq-emp-lab:1.0.0
+      - name: Cerrar sesión
+        if: always()
+        run: docker logout
