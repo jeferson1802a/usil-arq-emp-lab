@@ -15,7 +15,7 @@ for attempt in $(seq 1 30); do
   sleep 1
 done
 curl -fsS "$base/" | grep -q 'Cloud Computing'
-for path in styles.css app.js favicon.svg healthz; do curl -fsS "$base/$path" >/dev/null; done
+for path in styles.css app.js favicon.svg logo-usil.png healthz; do curl -fsS "$base/$path" >/dev/null; done
 curl -fsSI "$base/" | grep -qi 'X-Content-Type-Options: nosniff'
 test "$(curl -s -o /dev/null -w '%{http_code}' "$base/archivo-inexistente")" = 404
 test "$(curl -s -o /dev/null -w '%{http_code}' "$base/README.md")" = 404
